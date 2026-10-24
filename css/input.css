@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Палитра по умолчанию (главная, маркетплейс, корзина, менторство, 404) */
+:root {
+  --c-primary: 86 241 194;
+  --c-on-surface: 226 226 227;
+  --c-surface: 18 20 21;
+  --c-on-surface-variant: 187 202 194;
+  --c-surface-dim: 18 20 21;
+  --c-outline-variant: 60 74 68;
+  --c-background: 18 20 21;
+  --c-surface-tint: 62 222 177;
+}
+/* Палитра карточки товара из макета (чуть темнее, акцент #2dd4a7). Включается классом на <body>. */
+body.theme-product {
+  --c-primary: 45 212 167;
+  --c-on-surface: 230 237 235;
+  --c-surface: 15 18 20;
+  --c-on-surface-variant: 158 177 170;
+  --c-surface-dim: 13 15 17;
+  --c-outline-variant: 41 54 48;
+  --c-background: 11 13 14;
+  --c-surface-tint: 45 212 167;
+}
+
+@layer base {
+  html, body { margin: 0; padding: 0; }
+  body { overscroll-behavior: none; }
+  html { scroll-behavior: smooth; }
+}
+::-webkit-scrollbar { display: none; }
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal; font-style: normal; font-size: 24px; line-height: 1;
+  letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap;
+  word-wrap: normal; direction: ltr; -webkit-font-feature-settings: 'liga'; font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased; font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.material-symbols-outlined.fill { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+/* Лёгкие анимации (появление карточек, бейджи, тосты, нажатие кнопок) */
+@keyframes polyx-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.polyx-in { animation: polyx-in .35s ease backwards; }
+@keyframes polyx-pop { 0% { transform: scale(.6); } 60% { transform: scale(1.25); } 100% { transform: scale(1); } }
+.polyx-pop { animation: polyx-pop .3s ease; }
+.polyx-toast { animation: polyx-in .2s ease backwards; transition: opacity .3s, transform .3s; }
+button:not(:disabled):active, a.bg-primary:active { transform: scale(.97); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+
+/* Радио-кнопки карточки товара: в макете их стилизовал плагин @tailwindcss/forms — повторяем без плагина */
+.theme-product input[type=radio] {
+  -webkit-appearance: none; appearance: none; padding: 0; display: inline-block; vertical-align: middle; flex-shrink: 0;
+  height: 1rem; width: 1rem; border-width: 1px; border-style: solid; border-radius: 100%; background-origin: border-box; color: #2563eb;
+}
+.theme-product input[type=radio]:checked {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+  border-color: transparent; background-color: currentColor; background-size: 100% 100%; background-position: center; background-repeat: no-repeat;
+}
