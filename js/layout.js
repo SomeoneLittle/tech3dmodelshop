@@ -81,10 +81,9 @@
   var active = document.body.dataset.active || '';
   var nav = document.querySelector('header nav[data-active-classes]');
   if (nav) {
-    var on = nav.dataset.activeClasses;
     nav.querySelectorAll('a').forEach(function (a) {
       var is = a.dataset.path === active;
-      a.className = is ? 'transition-colors ' + on : 'text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors';
+      a.className = (is ? 'text-primary' : 'text-on-surface-variant hover:text-primary') + ' py-space-sm font-label-md text-label-md transition-colors';
       if (is) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
   }
