@@ -17,7 +17,7 @@
   function card(m, i) {
     var n = P.clone('tpl-featured');
     n.dataset.id = m.id; n.classList.add('cursor-pointer', 'polyx-in'); n.style.animationDelay = (i * 60) + 'ms';
-    P.fill(n, { img: m.img, title: m.title, meta: m.tris + ' • ' + m.extra, ratingText: ' ' + m.rating.toFixed(1) + ' (' + m.reviews + ')', blurb: m.blurb, price: S.priceText(m) });
+    P.fill(n, { img: m.img, title: m.title, meta: m.tris + ' • ' + m.extra, ratingText: ' ' + S.ratingOf(m).avg.toFixed(1) + ' (' + S.ratingOf(m).count + ')', blurb: m.blurb, price: S.priceText(m) });
     P.chips(n.querySelector('[data-chips]'), m.chips);
     syncAdd(n, m);
     return n;

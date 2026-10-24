@@ -4,14 +4,14 @@
   var D = window.POLYX_DATA;
   var byId = {};
   D.models.forEach(function (m) { byId[m.id] = m; });
-  var KEY = { w: 'polyx:wishlist', c: 'polyx:cart', s: 'polyx:seeded:v1' };
+  var KEY = { w: 'polyx:wishlist', c: 'polyx:cart', s: 'polyx:seeded:v1', r: 'polyx:ratings' };
   var mem = {};
   function read(k, d) { try { var v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return k in mem ? mem[k] : d; } }
   function write(k, v) { mem[k] = v; try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   function drop(k) { delete mem[k]; try { localStorage.removeItem(k); } catch (e) {} }
 
   if (/[?&]reset=1/.test(location.search)) {
-    [KEY.w, KEY.c, KEY.s].forEach(drop);
+    [KEY.w, KEY.c, KEY.s, KEY.r].forEach(drop);
     history.replaceState(null, '', location.pathname + location.hash);
   }
   // Демо-данные при первом заходе (как на макете: избранное и 3 позиции в корзине)
@@ -38,6 +38,13 @@
       var w = read(KEY.w, []), i = w.indexOf(id);
       if (i > -1) w.splice(i, 1); else w.push(id);
       write(KEY.w, w); changed(); return i === -1;
+    },
+    // оценки: средняя считается из стартового рейтинга модели + голос пользователя
+    userRating: function (id) { return (read(KEY.r, {}))[id] || 0; },
+    setRating: function (id, n) { var r = read(KEY.r, {}); if (n) r[id] = n; else delete r[id]; write(KEY.r, r); changed(); },
+    ratingOf: function (m) {
+      var u = (read(KEY.r, {}))[m.id] || 0;
+      return u ? { avg: (m.rating * m.reviews + u) / (m.reviews + 1), count: m.reviews + 1, user: u } : { avg: m.rating, count: m.reviews, user: 0 };
     },
     // корзина
     cart: function () { return read(KEY.c, []).filter(function (x) { return byId[x.id]; }); },

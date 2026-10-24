@@ -100,6 +100,34 @@
   wb.addEventListener('click', function () { P.wishToggle(m.id); syncWish(); });
   syncWish();
 
+
+  /* ----- рейтинг: средняя оценка и своя оценка (звёзды) ----- */
+  var avgBox = $('#rating-avg-stars'), starBtns = [].slice.call(document.querySelectorAll('#rate-stars [data-star]')), hover = 0;
+  function star(kind) { return '<span class="material-symbols-outlined text-[18px] block' + (kind === 'empty' ? ' text-outline' : ' fill') + '">' + (kind === 'half' ? 'star_half' : 'star') + '</span>'; }
+  function syncRating() {
+    var r = S.ratingOf(m), html = '';
+    for (var i = 1; i <= 5; i++) html += star(r.avg >= i - 0.25 ? 'full' : (r.avg >= i - 0.75 ? 'half' : 'empty'));
+    avgBox.innerHTML = html;
+    $('#rating-avg').textContent = r.avg.toFixed(1);
+    $('#rating-count').textContent = '(' + r.count + ' review' + (r.count === 1 ? '' : 's') + ')';
+    var shown = hover || r.user;
+    starBtns.forEach(function (b, i) {
+      var on = i < shown, ic = b.querySelector('.material-symbols-outlined');
+      ic.classList.toggle('fill', on); b.classList.toggle('text-primary', on); b.classList.toggle('text-outline', !on);
+    });
+    $('#rate-label').textContent = hover ? hover + ' / 5' : (r.user ? 'Your rating: ' + r.user + ' / 5' : 'Rate this model');
+  }
+  starBtns.forEach(function (b, i) {
+    b.addEventListener('mouseenter', function () { hover = i + 1; syncRating(); });
+    b.addEventListener('mouseleave', function () { hover = 0; syncRating(); });
+    b.addEventListener('click', function () {
+      var n = i + 1, same = S.userRating(m.id) === n;
+      S.setRating(m.id, same ? 0 : n); hover = 0;
+      P.toast(same ? 'Your rating was removed' : 'Thanks! You rated it ' + n + ' / 5', same ? 'info' : 'star');
+    });
+  });
+  syncRating();
+
   /* ----- теги ----- */
   var tagBox = $('[data-list-tags]');
   var tags = isApex ? D.apexTags : ['#GameReady', '#PBR-4K'].concat(fmts.map(function (c) { return '#' + c.slice(1); }), ['#' + m.cat.charAt(0).toUpperCase() + m.cat.slice(1)]);
@@ -193,5 +221,5 @@
     if (act && act.dataset.action === 'add') { if (S.inCart(sid)) { location.href = 'cart.html'; return; } P.add(sid); syncSimilar(art, S.byId[sid]); return; }
     location.href = P.productUrl(sid);
   });
-  document.addEventListener('polyx:change', function () { syncWish(); simGrid.querySelectorAll('article').forEach(function (a) { syncSimilar(a, S.byId[a.dataset.id]); }); });
+  document.addEventListener('polyx:change', function () { syncWish(); syncRating(); simGrid.querySelectorAll('article').forEach(function (a) { syncSimilar(a, S.byId[a.dataset.id]); }); });
 })();

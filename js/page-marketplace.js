@@ -41,7 +41,7 @@
   function card(m, i) {
     var n = P.clone('tpl-card');
     n.dataset.id = m.id; n.classList.add('polyx-in'); n.style.animationDelay = (i * 45) + 'ms';
-    P.fill(n, { img: m.img, title: m.title, tris: m.tris, extra: m.extra, catLabel: m.catLabel, rating: m.rating.toFixed(1), reviews: '(' + m.reviews + ')',
+    P.fill(n, { img: m.img, title: m.title, tris: m.tris, extra: m.extra, catLabel: m.catLabel, rating: S.ratingOf(m).avg.toFixed(1), reviews: '(' + S.ratingOf(m).count + ')',
       sub: m.sub, priceLabel: m.priceLabel || 'Standard', price: S.priceText(m) });
     P.chips(n.querySelector('[data-chips]'), m.chips);
     P.wishIconState(n.querySelector('[data-action=wish]'), m.id);
