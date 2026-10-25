@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>My Account | POLYX.3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<script>try{var a=localStorage.getItem("polyx:accent");if(a)document.documentElement.setAttribute("data-accent",a)}catch(e){}</script>
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/extra.css">
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col justify-between" data-page="account" data-active="account">
+<div id="site-header"></div>
+<main class="w-full pt-16 min-h-[calc(100vh-16rem)]"><div class="flex flex-col w-full">
+<div class="max-w-7xl mx-auto w-full px-margin-mobile md:px-margin-tablet lg:px-margin py-space-xl">
+<nav class="flex items-center gap-space-xs font-code-tech text-code-tech text-on-surface-variant mb-space-lg">
+<a class="hover:text-primary transition-colors" href="index.html">Home</a>
+<span class="text-outline-variant">/</span>
+<span class="text-primary font-semibold">My account</span>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<aside class="lg:col-span-4 bg-surface-container-low border border-outline-variant/40 rounded-xl p-space-lg space-y-space-md lg:sticky lg:top-20">
+<div class="flex items-center gap-space-md">
+<div class="p-0.5 rounded-full border border-outline-variant/50"><img alt="Profile" class="w-16 h-16 rounded-full object-cover" id="acc-avatar" src=""/></div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface">Guest</div>
+<div class="font-code-tech text-[11px] text-on-surface-variant" id="acc-count"></div>
+</div>
+</div>
+<div class="px-wip">
+<span class="material-symbols-outlined text-primary text-[22px] shrink-0">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Signing in is coming soon. For now your favorites are saved in this browser only and may disappear if you clear site data.</p>
+</div>
+<button class="w-full py-2.5 rounded-lg bg-surface-container-high text-on-surface-variant font-label-md text-label-md cursor-not-allowed opacity-70 flex items-center justify-center gap-2" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">login</span>
+<span>Sign in (soon)</span>
+</button>
+</aside>
+<section class="lg:col-span-8">
+<div class="flex items-center justify-between pb-space-md border-b border-outline-variant/30 mb-space-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-surface flex items-center gap-2"><span class="material-symbols-outlined text-primary fill">favorite</span>My favorites</h1>
+<button class="font-code-tech text-label-sm text-secondary hover:underline flex items-center gap-1" id="acc-clear" type="button"><span class="material-symbols-outlined text-[14px]">delete</span>Clear all</button>
+</div>
+<div class="px-grid-3" id="acc-grid"></div>
+<div class="hidden bg-surface-container-low border border-outline-variant/20 rounded-xl p-space-xl text-center" id="acc-empty">
+<span class="material-symbols-outlined text-[40px] text-outline">heart_broken</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mt-space-sm">No favorites yet</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Tap the heart on any model to save it here.</p>
+<a class="mt-space-md inline-flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-primary hover:bg-secondary text-on-primary font-label-md text-label-md transition-colors" href="marketplace.html">Browse marketplace</a>
+</div>
+</section>
+</div>
+</div>
+</div></main>
+<div id="site-footer"></div>
+<script src="js/data.js"></script>
+<script src="js/i18n-uk.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/store.js"></script>
+<script src="js/shell.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/page-account.js"></script>
+</body>
+</html>

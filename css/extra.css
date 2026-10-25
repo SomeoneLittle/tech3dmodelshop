@@ -1,0 +1,38 @@
+/* Дополнительные стили (Tailwind пересобрать нельзя без node, поэтому новые классы лежат здесь). Только токены темы. */
+.px-burger { display: inline-flex; }
+@media (min-width: 1024px) { .px-burger { display: none; } }
+.px-mnav { position: fixed; top: 4rem; left: 0; right: 0; z-index: 49; display: none; padding: .75rem 1rem 1rem; background: rgb(var(--c-surface)); border-bottom: 1px solid rgb(var(--c-outline-variant) / .5); }
+.px-mnav.is-open { display: block; }
+.px-mnav a { display: flex; align-items: center; justify-content: space-between; padding: .7rem .5rem; border-radius: .5rem; color: rgb(var(--c-on-surface-variant)); }
+.px-mnav a:hover, .px-mnav a.is-active { color: rgb(var(--c-primary)); background: rgb(var(--c-on-surface) / .05); }
+.px-lang { display: inline-flex; border: 1px solid rgb(var(--c-outline-variant) / .5); border-radius: .5rem; overflow: hidden; }
+.px-lang button { padding: .2rem .5rem; font-size: 11px; line-height: 1.2; letter-spacing: .06em; color: rgb(var(--c-on-surface-variant)); }
+.px-lang button:hover { color: rgb(var(--c-primary)); }
+.px-lang button.is-on { background: rgb(var(--c-primary)); color: rgb(var(--c-on-primary)); font-weight: 700; }
+.px-wip { display: flex; align-items: flex-start; gap: .75rem; padding: .9rem 1.1rem; border-radius: .75rem; border: 1px dashed rgb(var(--c-primary) / .55); background: rgb(var(--c-primary) / .08); }
+.px-store { display: inline-flex; align-items: center; gap: .35rem; padding: .3rem .6rem; border-radius: .5rem; font-size: 12px; line-height: 1.2; border: 1px solid rgb(var(--c-outline-variant) / .6); background: rgb(var(--c-on-surface) / .05); color: rgb(var(--c-on-surface)); transition: all .15s; white-space: nowrap; }
+.px-store:hover { border-color: rgb(var(--c-primary)); color: rgb(var(--c-primary)); background: rgb(var(--c-primary) / .1); }
+.px-store .material-symbols-outlined { font-size: 15px; color: rgb(var(--c-primary)); }
+.px-store-lg { padding: .7rem 1rem; font-size: 14px; border-radius: .6rem; width: 100%; justify-content: space-between; }
+.px-prose p { margin: 0 0 1.1rem; line-height: 1.75; color: rgb(var(--c-on-surface-variant)); font-size: 1.05rem; }
+.px-chip-on { background: rgb(var(--c-primary)); color: rgb(var(--c-on-primary)); }
+.px-hidden { display: none !important; }
+.px-step { counter-increment: pxstep; }
+.px-step::before { content: counter(pxstep, decimal-leading-zero); font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.6rem; color: rgb(var(--c-primary)); }
+.px-line-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.px-grid-3 { display: grid; gap: 1.5rem; grid-template-columns: repeat(1, minmax(0, 1fr)); }
+@media (min-width: 768px) { .px-grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .px-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.px-grid-4 { display: grid; gap: 1.5rem; grid-template-columns: repeat(1, minmax(0, 1fr)); }
+@media (min-width: 640px) { .px-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .px-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.px-dropdown { position: fixed; z-index: 80; min-width: 12rem; padding: .5rem; border-radius: .75rem; border: 1px solid rgb(var(--c-outline-variant) / .5); background: rgb(var(--c-surface) / .98); box-shadow: 0 20px 50px -10px rgb(0 0 0 / .6); }
+.px-ring { box-shadow: 0 0 0 2px rgb(var(--c-primary)); border-color: rgb(var(--c-primary) / .4); }
+.px-modal { max-height: 92vh; }
+.px-modal-media { min-height: 240px; max-height: 50vh; }
+@media (min-width: 1024px) { .px-modal-media { max-height: 92vh; } }
+.px-navbtn { top: 50%; transform: translateY(-50%); }
+.px-mt-auto { margin-top: auto; }
+
+header nav a { white-space: nowrap; }
+
