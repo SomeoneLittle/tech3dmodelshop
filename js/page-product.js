@@ -52,7 +52,7 @@
   renderThumbs(); applyMain();
 
   /* ----- режимы вьюпорта ----- */
-  var MODE_ON = ['bg-[#2dd4a7]', 'text-[#002117]', 'font-semibold'], MODE_OFF = ['text-on-surface-variant', 'hover:bg-[#1f2628]'];
+  var MODE_ON = ['bg-g2dd4a7', 'text-g002117', 'font-semibold'], MODE_OFF = ['text-on-surface-variant', 'hover:bg-[#1f2628]'];
   var modeBtns = { orbit: $('#btn-mode-orbit'), wire: $('#btn-mode-wire'), matcap: $('#btn-mode-matcap'), uv: $('#btn-mode-uv') };
   function setMode(k) {
     mode = k;
@@ -76,13 +76,13 @@
   });
 
   /* ----- лицензии ----- */
-  var LIC_ON = ['border-[#2dd4a7]', 'ring-1', 'ring-[#2dd4a7]/60'];
+  var LIC_ON = ['border-g2dd4a7', 'ring-1', 'ring-g2dd4a7/60'];
   document.querySelectorAll('input[name="license-type"]').forEach(function (inp) {
     inp.addEventListener('change', function () {
       lic = inp.dataset.license;
       document.querySelectorAll('.license-option').forEach(function (o) {
         var on = o.contains(inp);
-        LIC_ON.forEach(function (c) { o.classList.toggle(c, on); }); o.classList.toggle('border-[#293630]', !on);
+        LIC_ON.forEach(function (c) { o.classList.toggle(c, on); }); o.classList.toggle('border-g293630', !on);
       });
       refreshPrice();
     });
@@ -94,7 +94,7 @@
   function syncWish() {
     var on = S.isWish(m.id), ic = wb.querySelector('.material-symbols-outlined');
     ic.style.fontVariationSettings = on ? "'FILL' 1" : "'FILL' 0";
-    wb.classList.toggle('text-[#2dd4a7]', on); wb.classList.toggle('border-[#2dd4a7]/50', on);
+    wb.classList.toggle('text-g2dd4a7', on); wb.classList.toggle('border-g2dd4a7/50', on);
     P.setText(wb.querySelector('span:last-child'), on ? 'Favorited (' + (wcount + 1) + ')' : 'Add to favorites');
   }
   wb.addEventListener('click', function () { P.wishToggle(m.id); syncWish(); });
@@ -135,7 +135,7 @@
 
   /* ----- вкладки ----- */
   var bd = $('#btn-tab-description'), bs = $('#btn-tab-specs'), pd = $('#tab-description'), ps = $('#tab-specs');
-  var TON = ['bg-[#2dd4a7]', 'text-[#002117]', 'font-bold', 'shadow-md'], TOFF = ['text-on-surface-variant', 'hover:bg-[#1a2022]'];
+  var TON = ['bg-g2dd4a7', 'text-g002117', 'font-bold', 'shadow-md'], TOFF = ['text-on-surface-variant', 'hover:bg-[#1a2022]'];
   function tab(isDesc) {
     [[bd, isDesc], [bs, !isDesc]].forEach(function (p) {
       TON.forEach(function (c) { p[0].classList.toggle(c, p[1]); }); TOFF.forEach(function (c) { p[0].classList.toggle(c, !p[1]); });

@@ -2,18 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Палитра по умолчанию (главная, маркетплейс, корзина, менторство, 404) */
+/* ===== THEMES (сгенерировано) ===== */
 :root {
+  --c-secondary: 77 221 182;
+  --c-on-secondary-fixed-variant: 0 81 63;
+  --c-on-tertiary: 39 51 49;
+  --c-inverse-primary: 0 108 82;
+  --c-tertiary: 206 219 215;
+  --c-on-secondary-container: 0 64 49;
+  --c-secondary-fixed-dim: 77 221 182;
+  --c-on-primary: 0 56 41;
+  --c-on-primary-fixed-variant: 0 81 61;
   --c-primary: 86 241 194;
+  --c-on-tertiary-fixed-variant: 61 73 71;
+  --c-on-tertiary-fixed: 18 30 28;
+  --c-on-primary-fixed: 0 33 23;
+  --c-tertiary-container: 178 191 188;
+  --c-on-primary-container: 0 87 66;
   --c-on-surface: 226 226 227;
   --c-surface: 18 20 21;
   --c-on-surface-variant: 187 202 194;
+  --c-on-tertiary-container: 66 78 76;
   --c-surface-dim: 18 20 21;
+  --c-on-secondary: 0 56 43;
   --c-outline-variant: 60 74 68;
   --c-background: 18 20 21;
+  --c-primary-container: 45 212 167;
   --c-surface-tint: 62 222 177;
+  --c-primary-fixed: 99 252 204;
+  --c-secondary-fixed: 111 250 210;
+  --c-secondary-container: 0 182 145;
+  --c-primary-fixed-dim: 62 222 177;
+  --c-tertiary-fixed-dim: 188 201 198;
+  --c-on-secondary-fixed: 0 33 24;
+  --g-2dd4a7: 45 212 167;
+  --g-293630: 41 54 48;
+  --g-002117: 0 33 23;
+  --g-56f1c2: 86 241 194;
+  --g-9eb1aa: 158 177 170;
+  --g-00b691: 0 182 145;
+  --g-172421: 23 36 33;
+  --g-4dddb6: 77 221 182;
 }
-/* Палитра карточки товара из макета (чуть темнее, акцент #2dd4a7). Включается классом на <body>. */
+/* Карточка товара: собственная (чуть более тёмная) палитра макета */
 body.theme-product {
   --c-primary: 45 212 167;
   --c-on-surface: 230 237 235;
@@ -24,6 +55,187 @@ body.theme-product {
   --c-background: 11 13 14;
   --c-surface-tint: 45 212 167;
 }
+/* акцент: Rose */
+html[data-accent="red"] {
+  --c-secondary: 221 77 102;
+  --c-on-secondary-fixed-variant: 81 0 10;
+  --c-on-tertiary: 51 39 40;
+  --c-inverse-primary: 108 0 15;
+  --c-tertiary: 219 206 209;
+  --c-on-secondary-container: 64 0 9;
+  --c-secondary-fixed-dim: 221 77 102;
+  --c-on-primary: 56 0 9;
+  --c-on-primary-fixed-variant: 81 0 12;
+  --c-primary: 241 86 117;
+  --c-on-tertiary-fixed-variant: 73 61 62;
+  --c-on-tertiary-fixed: 30 18 19;
+  --c-on-primary-fixed: 33 0 7;
+  --c-tertiary-container: 191 178 180;
+  --c-on-primary-container: 87 0 12;
+  --c-on-surface-variant: 202 187 193;
+  --c-on-tertiary-container: 78 66 67;
+  --c-on-secondary: 56 0 7;
+  --c-outline-variant: 74 60 65;
+  --c-primary-container: 212 45 73;
+  --c-surface-tint: 222 62 91;
+  --c-primary-fixed: 252 99 132;
+  --c-secondary-fixed: 250 111 137;
+  --c-secondary-container: 182 0 19;
+  --c-primary-fixed-dim: 222 62 91;
+  --c-tertiary-fixed-dim: 201 188 190;
+  --c-on-secondary-fixed: 33 0 6;
+  --g-2dd4a7: 212 45 73;
+  --g-293630: 54 41 46;
+  --g-002117: 33 0 7;
+  --g-56f1c2: 241 86 117;
+  --g-9eb1aa: 177 158 163;
+  --g-00b691: 182 0 19;
+  --g-172421: 36 23 25;
+  --g-4dddb6: 221 77 102;
+}
+html[data-accent="red"] body.theme-product {
+  --c-primary: 212 45 73;
+  --c-on-surface-variant: 177 158 163;
+  --c-outline-variant: 54 41 46;
+  --c-surface-tint: 212 45 73;
+}
+html[data-accent="red"] header img[alt*="Logo"], html[data-accent="red"] footer img[alt*="Logo"] { filter: hue-rotate(186deg); }
+/* акцент: Sky */
+html[data-accent="blue"] {
+  --c-secondary: 77 157 221;
+  --c-on-secondary-fixed-variant: 0 41 81;
+  --c-on-tertiary: 39 44 51;
+  --c-inverse-primary: 0 57 108;
+  --c-tertiary: 206 214 219;
+  --c-on-secondary-container: 0 33 64;
+  --c-secondary-fixed-dim: 77 157 221;
+  --c-on-primary: 0 31 56;
+  --c-on-primary-fixed-variant: 0 43 81;
+  --c-primary: 86 177 241;
+  --c-on-tertiary-fixed-variant: 61 66 73;
+  --c-on-tertiary-fixed: 18 23 30;
+  --c-on-primary-fixed: 0 19 33;
+  --c-tertiary-container: 178 185 191;
+  --c-on-primary-container: 0 46 87;
+  --c-on-surface-variant: 187 199 202;
+  --c-on-tertiary-container: 66 71 78;
+  --c-on-secondary: 0 29 56;
+  --c-outline-variant: 60 70 74;
+  --c-primary-container: 45 137 212;
+  --c-surface-tint: 62 152 222;
+  --c-primary-fixed: 99 190 252;
+  --c-secondary-fixed: 111 190 250;
+  --c-secondary-container: 0 89 182;
+  --c-primary-fixed-dim: 62 152 222;
+  --c-tertiary-fixed-dim: 188 195 201;
+  --c-on-secondary-fixed: 0 18 33;
+  --g-2dd4a7: 45 137 212;
+  --g-293630: 41 51 54;
+  --g-002117: 0 19 33;
+  --g-56f1c2: 86 177 241;
+  --g-9eb1aa: 158 170 177;
+  --g-00b691: 0 89 182;
+  --g-172421: 23 30 36;
+  --g-4dddb6: 77 157 221;
+}
+html[data-accent="blue"] body.theme-product {
+  --c-primary: 45 137 212;
+  --c-on-surface-variant: 158 170 177;
+  --c-outline-variant: 41 51 54;
+  --c-surface-tint: 45 137 212;
+}
+html[data-accent="blue"] header img[alt*="Logo"], html[data-accent="blue"] footer img[alt*="Logo"] { filter: hue-rotate(43deg); }
+/* акцент: Amber */
+html[data-accent="orange"] {
+  --c-secondary: 221 148 77;
+  --c-on-secondary-fixed-variant: 81 44 0;
+  --c-on-tertiary: 51 46 39;
+  --c-inverse-primary: 108 57 0;
+  --c-tertiary: 219 212 206;
+  --c-on-secondary-container: 64 34 0;
+  --c-secondary-fixed-dim: 221 148 77;
+  --c-on-primary: 56 28 0;
+  --c-on-primary-fixed-variant: 81 42 0;
+  --c-primary: 241 158 86;
+  --c-on-tertiary-fixed-variant: 73 68 61;
+  --c-on-tertiary-fixed: 30 25 18;
+  --c-on-primary-fixed: 33 15 0;
+  --c-tertiary-container: 191 185 178;
+  --c-on-primary-container: 87 46 0;
+  --c-on-surface-variant: 202 190 187;
+  --c-on-tertiary-container: 78 73 66;
+  --c-on-secondary: 56 30 0;
+  --c-outline-variant: 74 65 60;
+  --c-primary-container: 212 128 45;
+  --c-surface-tint: 222 140 62;
+  --c-primary-fixed: 252 168 99;
+  --c-secondary-fixed: 250 178 111;
+  --c-secondary-container: 182 103 0;
+  --c-primary-fixed-dim: 222 140 62;
+  --c-tertiary-fixed-dim: 201 195 188;
+  --c-on-secondary-fixed: 33 16 0;
+  --g-2dd4a7: 212 128 45;
+  --g-293630: 54 45 41;
+  --g-002117: 33 15 0;
+  --g-56f1c2: 241 158 86;
+  --g-9eb1aa: 177 166 158;
+  --g-00b691: 182 103 0;
+  --g-172421: 36 30 23;
+  --g-4dddb6: 221 148 77;
+}
+html[data-accent="orange"] body.theme-product {
+  --c-primary: 212 128 45;
+  --c-on-surface-variant: 177 166 158;
+  --c-outline-variant: 54 45 41;
+  --c-surface-tint: 212 128 45;
+}
+html[data-accent="orange"] header img[alt*="Logo"], html[data-accent="orange"] footer img[alt*="Logo"] { filter: hue-rotate(-134deg); }
+/* акцент: Violet */
+html[data-accent="violet"] {
+  --c-secondary: 141 77 221;
+  --c-on-secondary-fixed-variant: 40 0 81;
+  --c-on-tertiary: 46 39 51;
+  --c-inverse-primary: 51 0 108;
+  --c-tertiary: 211 206 219;
+  --c-on-secondary-container: 31 0 64;
+  --c-secondary-fixed-dim: 141 77 221;
+  --c-on-primary: 25 0 56;
+  --c-on-primary-fixed-variant: 38 0 81;
+  --c-primary: 150 86 241;
+  --c-on-tertiary-fixed-variant: 68 61 73;
+  --c-on-tertiary-fixed: 25 18 30;
+  --c-on-primary-fixed: 14 0 33;
+  --c-tertiary-container: 184 178 191;
+  --c-on-primary-container: 41 0 87;
+  --c-on-surface-variant: 190 187 202;
+  --c-on-tertiary-container: 73 66 78;
+  --c-on-secondary: 27 0 56;
+  --c-outline-variant: 64 60 74;
+  --c-primary-container: 120 45 212;
+  --c-surface-tint: 132 62 222;
+  --c-primary-fixed: 161 99 252;
+  --c-secondary-fixed: 171 111 250;
+  --c-secondary-container: 93 0 182;
+  --c-primary-fixed-dim: 132 62 222;
+  --c-tertiary-fixed-dim: 194 188 201;
+  --c-on-secondary-fixed: 15 0 33;
+  --g-2dd4a7: 120 45 212;
+  --g-293630: 44 41 54;
+  --g-002117: 14 0 33;
+  --g-56f1c2: 150 86 241;
+  --g-9eb1aa: 165 158 177;
+  --g-00b691: 93 0 182;
+  --g-172421: 29 23 36;
+  --g-4dddb6: 141 77 221;
+}
+html[data-accent="violet"] body.theme-product {
+  --c-primary: 120 45 212;
+  --c-on-surface-variant: 165 158 177;
+  --c-outline-variant: 44 41 54;
+  --c-surface-tint: 120 45 212;
+}
+html[data-accent="violet"] header img[alt*="Logo"], html[data-accent="violet"] footer img[alt*="Logo"] { filter: hue-rotate(103deg); }
+
 
 @layer base {
   html, body { margin: 0; padding: 0; }
@@ -55,7 +267,7 @@ button:not(:disabled):active, a.bg-primary:active { transform: scale(.97); }
 /* Радио-кнопки карточки товара: в макете их стилизовал плагин @tailwindcss/forms — повторяем без плагина */
 .theme-product input[type=radio] {
   -webkit-appearance: none; appearance: none; padding: 0; display: inline-block; vertical-align: middle; flex-shrink: 0;
-  height: 1rem; width: 1rem; border-width: 1px; border-style: solid; border-radius: 100%; background-origin: border-box; color: #2563eb;
+  height: 1rem; width: 1rem; border-width: 1px; border-style: solid; border-radius: 100%; background-origin: border-box;
 }
 .theme-product input[type=radio]:checked {
   background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
@@ -69,3 +281,7 @@ header nav a[data-path]::after {
   background: rgb(var(--c-primary)); transform: scaleX(0); transform-origin: right; transition: transform .25s ease;
 }
 header nav a[data-path]:hover::after, header nav a[data-path][aria-current="page"]::after { transform: scaleX(1); transform-origin: left; }
+
+/* Фоновая геометрия: медленное вращение (отключается при prefers-reduced-motion) */
+@keyframes polyx-spin { to { transform: rotate(360deg); } }
+.polyx-bg-spin { animation: polyx-spin 240s linear infinite; }

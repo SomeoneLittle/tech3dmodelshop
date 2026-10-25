@@ -78,6 +78,50 @@
   if (hdr) hdr.innerHTML = SHELL.header;
   if (ftr) ftr.innerHTML = SHELL.footer;
 
+  /* ---------- фон: геометрическая абстракция ---------- */
+  var bg = document.createElement('div');
+  bg.id = 'bg-art'; bg.className = 'fixed inset-0 -z-10 pointer-events-none overflow-hidden';
+  bg.innerHTML = SHELL.bg;
+  document.body.insertBefore(bg, document.body.firstChild);
+
+  /* ---------- выбор акцентного цвета ---------- */
+  var ACCENTS = [['green', 'Mint', '#56f1c2'], ['red', 'Rose', '#f15675'], ['blue', 'Sky', '#56b1f1'], ['orange', 'Amber', '#f19e56'], ['violet', 'Violet', '#9656f1']];
+  function currentAccent() { return document.documentElement.getAttribute('data-accent') || 'green'; }
+  function setAccent(id) {
+    if (id === 'green') document.documentElement.removeAttribute('data-accent'); else document.documentElement.setAttribute('data-accent', id);
+    try { localStorage.setItem('polyx:accent', id); } catch (e) {}
+    renderTheme();
+  }
+  var themeBtn = document.getElementById('hdr-theme');
+  var themeBox = document.createElement('div');
+  themeBox.className = 'hidden fixed z-[80] w-48 bg-surface-container-low border border-outline-variant/40 rounded-xl shadow-2xl p-2';
+  document.body.appendChild(themeBox);
+  function renderTheme() {
+    var cur = currentAccent();
+    themeBox.innerHTML = '<div class="px-2 pt-1 pb-2 font-code-tech text-[10px] uppercase tracking-widest text-on-surface-variant">Accent color</div>' +
+      ACCENTS.map(function (a) {
+        var on = a[0] === cur;
+        return '<button type="button" data-accent-pick="' + a[0] + '" class="w-full flex items-center gap-3 px-2 py-2 rounded-lg ' + (on ? 'bg-surface-container-high text-on-surface' : 'text-on-surface-variant hover:bg-surface-container hover:text-on-surface') + ' font-label-md text-label-md transition-colors">' +
+          '<span class="w-5 h-5 rounded-full border border-white/20 shrink-0 transition-transform ' + (on ? 'scale-110 ring-2 ring-offset-2 ring-offset-surface-container-high ring-white/60' : '') + '" style="background:' + a[2] + '"></span>' +
+          '<span class="flex-1 text-left">' + a[1] + '</span>' + (on ? '<span class="material-symbols-outlined text-[16px]">check</span>' : '') + '</button>';
+      }).join('');
+  }
+  function placeTheme() {
+    var r = themeBtn.getBoundingClientRect();
+    themeBox.style.top = (r.bottom + 10) + 'px'; themeBox.style.right = Math.max(8, window.innerWidth - r.right - 4) + 'px';
+  }
+  if (themeBtn) {
+    renderTheme();
+    themeBtn.addEventListener('click', function (e) {
+      e.stopPropagation(); placeTheme(); themeBox.classList.toggle('hidden');
+    });
+    themeBox.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-accent-pick]'); if (b) setAccent(b.dataset.accentPick);
+    });
+    document.addEventListener('click', function (e) { if (!themeBox.contains(e.target)) themeBox.classList.add('hidden'); });
+    window.addEventListener('resize', function () { themeBox.classList.add('hidden'); });
+  }
+
   var active = document.body.dataset.active || '';
   var nav = document.querySelector('header nav[data-active-classes]');
   if (nav) {
@@ -140,7 +184,7 @@
     if (b.dataset.act === 'wd-remove') { S.toggleWish(id); renderDrawer(); }
   });
   var wishBtn = document.getElementById('hdr-wish'); if (wishBtn) wishBtn.addEventListener('click', openDrawer);
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeDrawer(); closeSearch(); } });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeDrawer(); closeSearch(); themeBox.classList.add('hidden'); } });
 
   /* ---------- поиск в шапке ---------- */
   var sInput = document.getElementById('hdr-search'), sWrap = document.getElementById('hdr-search-wrap');
